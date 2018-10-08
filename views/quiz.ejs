@@ -1,33 +1,65 @@
 <%include ./partials/head.ejs%>
+
+<h1>Welcome to Handy! Please answer the following.</h1>
 <!-- for calculations -->
 <form class="handy-form" method="POST" action="/quiz">
 
-<div id="whom" class="fade out">
-	<input type="text" name="name" placeholder="Full Name">
-	<input type="email" name="email" placeholder="email">
+<div id="whom" class="box fade out">
+	<label for="name">Full Name</label>
+	<input type="text" name="name">
+
+	<label for="email">Email</label>
+	<input type="email" name="email">
+
+	<label for="preference">Preferred Work</label>
 	<select id="preference" name="preference">
-		<option selected>Select One</option>
+		<option selected></option>
 		<option value="House Cleaning">House Cleaning</option>
 		<option value="Handy Man">Handy Man</option>
 	</select>
 </div>
 
-<div class="fade out" >
+<div class="box fade out" >
 	<h2>How many hours do you want to work?</h2>
-	<input class="scored" value="4" id="hours" type="range" min="1" max="8" novalidate/>
+	<select class="scored" >
+		<option selected value="1" >1</option>
+		<option value="2" >2</option>
+		<option value="3" >3</option>
+		<option value="4" >4</option>
+		<option value="5" >5</option>
+		<option value="6" >6</option>
+		<option value="7" >7</option>
+		<option value="8" >8</option>
+		<option value="9" >More than 8</option>
+
+	</select>
 </div>
 
-<div class="fade out">
+<div class="box fade out">
 	<h2>How many days do you want to work?</h2>
-	<input class="scored" value="4" id="days" type="range" min="1" max="8"  novalidate/>
+	<!-- <input class="scored" value="4" id="days" type="range" min="1" max="8"  novalidate/> -->
+	<select class="scored" >
+		<option selected value="1" >1</option>
+		<option value="2" >2</option>
+		<option value="3" >3</option>
+		<option value="4" >4</option>
+		<option value="5" >5</option>
+		<option value="6" >More than 5</option>
+	</select>
 </div>
 
-<div class="fade out">
+<div class="box fade out">
 	<h2>How many projects have you run at once?</h2>
-	<input class="scored" value="4"  id="projects" type="range" min="1" max="8"  novalidate/>
+	<!-- <input class="scored" value="4"  id="projects" type="range" min="1" max="8"  novalidate/> -->
+	<select class="scored" >
+		<option selected value="1" >1</option>
+		<option value="2" >2</option>
+		<option value="3" >3</option>
+		<option value="4" >More than 3</option>
+	</select>
 </div>
 
-<div class="fade out">
+<div class="box fade out">
 	<h2>How many teams have you been a part of at once</h2>
 	<select class="scored" value="1" id="teams" >
 		<option value="1" >1</option>
@@ -38,21 +70,27 @@
 </div>
 
 
-<div class="fade out" id="cake">
+<div class="box fade out" id="cake">
 	<h2>Which cake is the best cake?</h2>
-	<select value="0" class="scored" id="cake" >
-		<option value="3" >Tiramisu</option>
+	<select class="scored" id="cake" >
+		<option selected value="3" >Tiramisu</option>
 		<option value="1" >Red Velvet</option>
 		<option value="5" >Tres Leches</option>
 		<option value="7" >Fudgy the Whale</option>
 	</select>
 </div>
 
+
 <input name="score" id="score" type="hidden">
 
-<button class="fade out" id="submit" value="submit" type="submit">SUBMIT</button>
+<div class="box fade out submit-box">
+	<h2>That's it! Go ahead and submit!</h2>
+	<button id="submit" value="submit" type="submit">SUBMIT</button>
+</div>
 
 </form>
+
+<h2 class="continue"><div id="tab"></div> <span>to continue</span></h2>
 
 <%include ./partials/end.ejs%>
 

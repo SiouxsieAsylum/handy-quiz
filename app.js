@@ -6,14 +6,13 @@ const parser = require('body-parser');
 const app = express();
 const PORT = 3000;
 
+app.use(parser.json());
+app.use(parser.urlencoded({ extended: false }));
+
 const routes = require('./routes/routeConfig');
 app.use('/quiz', routes);
 
 app.use(logger('dev'));
-app.use(parser.json());
-app.use(parser.urlencoded({ extended: false }));
-
-
 
 
 app.use(express.static(path.join(__dirname, 'public')));

@@ -14,31 +14,29 @@ document.addEventListener('DOMContentLoaded', function(){
 	function animate() {
 		elemArray[inputCounter].classList.remove('in');
 		elemArray[inputCounter].style.animationName = 'fade-out';
+		elemArray[inputCounter].style.display = 'none';
 		elemArray[inputCounter].classList.add('out');
 
 		if (elemArray[inputCounter + 1]) {
 			elemArray[inputCounter + 1].style.animationName = 'fade-in';
+			elemArray[inputCounter + 1].style.zIndex = 1;
 			elemArray[inputCounter + 1].classList.add('in');
 		}
 	}
 
-
+	console.log(elemArray)
 	for (let elem of elemArray) {
-		if (elem.querySelector('input' )|| elem.querySelector('select')){
-			let input = elem.querySelector("#preference")|| elem.querySelector('input' ) || elem.querySelector('select');
+		if (elem.querySelector('input' )|| elem.querySelector('select') || submit){
+			let input = elem.querySelector("#preference") || elem.querySelector('input' ) || elem.querySelector('select') || submit;
 			input.addEventListener('change', handleChange);
 			input.addEventListener('keyup', function(e){
-				console.log(input);
 				if (e.keyCode === 9){
-					console.log(score.value)
-					//e.preventDefault();
 					if (input.classList.contains('scored')) score.value  = Number(score.value) +  Number(input.value);
 					input.removeEventListener('change', handleChange);
 					animate();
 					inputCounter++;
 
 				}
-
 
 			});
 
@@ -47,8 +45,6 @@ document.addEventListener('DOMContentLoaded', function(){
 			}
 		}
 
-
-
 	}
 
 
@@ -56,9 +52,15 @@ document.addEventListener('DOMContentLoaded', function(){
 		whom.classList.add('fade');	
 		whom.classList.add('in');	
 		whom.style.animationName = 'fade-in';
+		whom.style.zIndex = 1;
 
-	},1000)
+	},0)
 
-
-
+	function enter(e){
+		console.log(inputCounter, elemArray.length)
+		if (e.keyCode === 13 && inputCounter < elemArray.length - 2) {
+			e.preventDefault();
+		}
+	}
+	window.addEventListener('keydown', enter);
 })

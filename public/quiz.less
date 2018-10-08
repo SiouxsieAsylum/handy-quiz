@@ -1,7 +1,100 @@
-@color: red;
+.background-border{
+	background-color: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 5px;	
+}
+
+.column-flex{
+	display: flex;
+	flex-direction: column;
+}
+
 
 body{
-	color: @color;
+	height: 100vh;
+	width: 100vw;
+	background-color: rgb(24,210,238);
+	color: white;
+	transition: 1s;
+	position: relative;
+	.column-flex
+
+}
+
+#logo{
+    background-image: url(handy-logo.jpg);
+    height: 100px;
+    width: auto;
+    background-size: cover;
+    align-self: center;
+    width: 150px;
+    margin-top: 10px;
+}
+
+form {
+    height: 40vh;
+    margin: 10vh 0;
+	.column-flex;
+    justify-content: center;
+    position: relative;
+}
+
+
+h1{
+    width: 100%;
+    align-self: center;
+    text-align: center;
+    font-size: 35px;
+    padding-top: 25px;
+}
+
+#tab{
+	height: 50px;
+	width: 50px;
+	background-size: cover;
+	background-image: url('tab.png');
+}
+
+.continue{
+	display: flex;
+	align-self: center;
+	margin-bottom: 10px;
+	span{
+	    align-self: center;
+	    font-size: 20px;
+	    padding-left: 10px;	}
+}
+
+label,
+h2{
+	margin-top: 5px;
+}
+
+.box{
+	position: absolute;
+    top: 0vh;
+    width: 50vw;
+    height: 10vh;
+    align-self: center;
+	input,
+	select{
+		.background-border;
+	    display: block;
+	    width: 100%;
+	    color: white;
+	    height: 50px;
+	    font-size: 14px;
+	    margin: 10px 0px;
+	    padding-left: 8px;
+	    transition-duration: .25s;
+	    &:focus,
+	    &:active{
+	    	outline: none;
+	    	border-left: 2px solid white;
+	    	box-shadow: inset 0px 0px 5px 5px rgba(255, 255, 255, 0.2), 0px 0px 5px 5px rgba(255, 255, 255, 0.5);
+	    }
+	}
+
 }
 
 .fade {
@@ -18,6 +111,33 @@ body{
 	opacity: 1;
 }
 
+.submit-box{
+	.column-flex;
+    align-items: center;
+    h2{
+    	font-size: 20px;
+    }
+
+    #submit {
+	height: 50px;
+	width: 20vw;
+	transition: .25s;
+	color: white;
+	margin: 10px 0px;
+	font-size: 14px;
+	.background-border;	
+		&:focus,
+	    &:hover,
+	    &:active{
+	    	outline: none;
+	    	background-color: rgba(255, 255, 255, 0.5);
+	    }
+	}
+}
+
+
+
+
 @keyframes fade-in{
 	0% {transform: translateY(50px); opacity: 0;}
 	100% {transform: translateY(0px); opacity: 1;}
@@ -26,4 +146,19 @@ body{
 @keyframes fade-out{
 	0% {transform: translateY(0px); opacity: 1;}
 	100% {transform: translateY(50px); opacity: 0;}
+}
+
+@media screen and (max-width: 600px) {
+
+	h1{
+    	font-size: 25px;
+	}	
+
+	form {
+	    height: 30vh;
+	    margin: 8vh 0;
+		.column-flex;
+	    justify-content: center;
+	    position: relative;
+	}
 }

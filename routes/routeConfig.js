@@ -6,7 +6,7 @@ router.get('/', function(req, res){
 	res.render('quiz')
 })
 
-router.post('/', scoreController.Submit)//how to pass user in here
+router.post('/', scoreController.Submit)
 
 router.get('/finished', function(req, res){
 	res.render('thanks');
