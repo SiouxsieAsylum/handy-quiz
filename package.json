@@ -4,7 +4,9 @@
   "description": "Sample Quiz Application",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "lessc public/quiz.less public/quiz.css && nodemon app.js",
+    "deploy": "psql createdb handyquiz && psql -d handyquiz -f db/migrations/migration-10062018.sql && psql -d handyquiz -f db/seeds/seed.sql && lessc public/quiz.less public/quiz.css && nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -18,11 +20,13 @@
   "homepage": "https://github.com/SiouxsieAsylum/handy-quiz#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
-    "dotenv": "^6.0.0",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.6.1",
     "express": "^4.16.3",
     "less": "^3.8.1",
     "morgan": "^1.9.1",
     "node-fetch": "^2.2.0",
-    "nodemon": "^1.18.4"
+    "nodemon": "^1.18.4",
+    "pg-promise": "^8.4.6"
   }
 }

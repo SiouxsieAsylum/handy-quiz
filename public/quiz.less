@@ -1,0 +1,29 @@
+@color: red;
+
+body{
+	color: @color;
+}
+
+.fade {
+	animation-duration: 1s;
+	animation-timing-function: ease-out;
+
+}
+
+.out {
+	opacity: 0;
+}
+
+.in {
+	opacity: 1;
+}
+
+@keyframes fade-in{
+	0% {transform: translateY(50px); opacity: 0;}
+	100% {transform: translateY(0px); opacity: 1;}
+}
+
+@keyframes fade-out{
+	0% {transform: translateY(0px); opacity: 1;}
+	100% {transform: translateY(50px); opacity: 0;}
+}
