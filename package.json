@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "lessc public/quiz.less public/quiz.css && nodemon app.js",
-    "deploy": "psql createdb handyquiz && psql -d handyquiz -f db/migrations/migration-10062018.sql && psql -d handyquiz -f db/seeds/seed.sql && lessc public/quiz.less public/quiz.css && nodemon app.js"
+    "deploy": "dropdb handyquiz --if-exists && createdb handyquiz && psql -d handyquiz -f db/migrations/migration-10062018.sql && lessc public/quiz.less public/quiz.css &&  nodemon app.js"
   },
   "repository": {
     "type": "git",
