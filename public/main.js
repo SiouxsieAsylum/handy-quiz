@@ -1,11 +1,5 @@
 document.addEventListener('DOMContentLoaded', function(){
 	const whom = document.getElementById('whom');
-	const days = document.getElementById('days');
-	const hours = document.getElementById('hours');
-	const projects = document.getElementById('projects');
-	const teams = document.getElementById('teams');
-	const cake = document.getElementById('cake');
-	const score = document.getElementById('score');
 	const submit = document.getElementById('submit');
 
 	let elemArray = Array.from(document.getElementsByClassName('fade'));
@@ -24,13 +18,12 @@ document.addEventListener('DOMContentLoaded', function(){
 		}
 	}
 
-	console.log(elemArray)
 	for (let elem of elemArray) {
 		if (elem.querySelector('input' )|| elem.querySelector('select') || submit){
 			let input = elem.querySelector("#preference") || elem.querySelector('input' ) || elem.querySelector('select') || submit;
 			input.addEventListener('change', handleChange);
 			input.addEventListener('keyup', function(e){
-				if (e.keyCode === 9){
+				if (e.keyCode === 9 && input.value.length){
 					if (input.classList.contains('scored')) score.value  = Number(score.value) +  Number(input.value);
 					input.removeEventListener('change', handleChange);
 					animate();
@@ -44,9 +37,7 @@ document.addEventListener('DOMContentLoaded', function(){
 				if (input.classList.contains('scored')) score.value  = Number(score.value) +  Number(input.value);
 			}
 		}
-
 	}
-
 
 	setTimeout(function(){
 		whom.classList.add('fade');	
@@ -56,11 +47,21 @@ document.addEventListener('DOMContentLoaded', function(){
 
 	},0)
 
+	//prevent submission by enter key until all have been answered
 	function enter(e){
-		console.log(inputCounter, elemArray.length)
-		if (e.keyCode === 13 && inputCounter < elemArray.length - 2) {
-			e.preventDefault();
+		if (e.keyCode === 13) {
+			if (inputCounter < elemArray.length - 2){
+				e.preventDefault();
+			}
+			else{
+				window.removeEventListener('keydown', enter);
+			}
 		}
 	}
+
 	window.addEventListener('keydown', enter);
+
+	submit.addEventListener('click', function(){
+		window.removeEventListener('keydown', enter);
+	})
 })
